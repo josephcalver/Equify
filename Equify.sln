@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Equify", "Equify\Equify.csproj", "{D77F5909-ADC7-4A4B-95DD-AF429E09037D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D77F5909-ADC7-4A4B-95DD-AF429E09037D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D77F5909-ADC7-4A4B-95DD-AF429E09037D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D77F5909-ADC7-4A4B-95DD-AF429E09037D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D77F5909-ADC7-4A4B-95DD-AF429E09037D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
