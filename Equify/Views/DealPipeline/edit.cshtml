@@ -1,0 +1,93 @@
+﻿@model Deal
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Deal</h1>
+
+<div class="frame">
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group row">
+            <label asp-for="CompanyName" class="col-form-label col-sm-3"></label>
+            <input asp-for="CompanyName" class="form-control col-sm-6" />
+            <span asp-validation-for="CompanyName" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Founded" class="col-form-label col-sm-3"></label>
+            <input asp-for="Founded" class="form-control col-sm-2" />
+            <span asp-validation-for="Founded" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Country" class="col-form-label col-sm-3"></label>
+            <input asp-for="Country" class="form-control col-sm-6" />
+            <span asp-validation-for="Country" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Region" class=" col-form-label col-sm-3"></label>
+            <input asp-for="Region" class="form-control col-sm-6" />
+            <span asp-validation-for="Region" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Sector" class="col-form-label col-sm-3"></label>
+            <input asp-for="Sector" class="form-control col-sm-6" />
+            <span asp-validation-for="Sector" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="EnterpriseValue" class="col-form-label col-sm-3"></label>
+            <input asp-for="EnterpriseValue" class="form-control col-sm-2" />
+            <span asp-validation-for="EnterpriseValue" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="DealType" class="col-form-label col-sm-3"></label>
+            <input asp-for="DealType" class="form-control col-sm-6" />
+            <span asp-validation-for="DealType" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="DealOriginationDate" class="col-form-label col-sm-3"></label>
+            <input asp-for="DealOriginationDate" class="form-control col-sm-3" />
+            <span asp-validation-for="DealOriginationDate" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="DealStatus" class="col-form-label col-sm-3"></label>
+            <input asp-for="DealStatus" class="form-control col-sm-2" />
+            <span asp-validation-for="DealStatus" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="FundInvesting" class="col-form-label col-sm-3"></label>
+            <input asp-for="FundInvesting" class="form-control col-sm-6" />
+            <span asp-validation-for="FundInvesting" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Currency" class="col-form-label col-sm-3"></label>
+            <input asp-for="Currency" class="form-control col-sm-1" />
+            <span asp-validation-for="Currency" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="EquityRequired" class="col-form-label col-sm-3"></label>
+            <input asp-for="EquityRequired" class="form-control col-sm-2" />
+            <span asp-validation-for="EquityRequired" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="DealTeamLead" class="col-form-label col-sm-3"></label>
+            <input asp-for="DealTeamLead" class="form-control col-sm-6" />
+            <span asp-validation-for="DealTeamLead" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="InvestorRelationsLead" class="col-form-label col-sm-3"></label>
+            <input asp-for="InvestorRelationsLead" class="form-control col-sm-6" />
+            <span asp-validation-for="InvestorRelationsLead" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="ESGLead" class="col-form-label col-sm-3"></label>
+            <input asp-for="ESGLead" class="form-control col-sm-6" />
+            <span asp-validation-for="ESGLead" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+        <a asp-action="Index">Cancel</a>
+    </form>
+</div>
