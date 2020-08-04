@@ -1,0 +1,145 @@
+﻿@model DealPipelineViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Deal Pipeline</h1>
+
+<p>
+    <a asp-action="Create">New Deal</a>
+</p>
+
+<form asp-controller="DealPipeline" asp-action="Index" method="get">
+    <div class="form-row">
+        <div class="form-group col-sm-4">
+            <label asp-for="FundInvesting">Fund</label>
+            <select asp-for="FundInvesting" asp-items="Model.FundsInvesting" class="form-control">
+                <option value="">All</option>
+            </select>
+        </div>
+        <div class="form-group col-sm-4">
+            <label asp-for="DealStatus">Deal Status</label>
+            <select asp-for="DealStatus" asp-items="Model.DealStatuses" class="form-control">
+                <option value="">All</option>
+            </select>
+        </div>
+        <div class="form-group col-sm-4">
+            <label asp-for="Region">Region</label>
+            <select asp-for="Region" asp-items="Model.Regions" class="form-control">
+                <option value="">All</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-sm-4">
+            <label asp-for="Sector">Sector</label>
+            <select asp-for="Sector" asp-items="Model.Sectors" class="form-control">
+                <option value="">All</option>
+            </select>
+        </div>
+        <div class="form-group col-sm-4">
+            <label asp-for="DealType">Deal Type</label>
+            <select asp-for="DealType" asp-items="Model.DealTypes" class="form-control">
+                <option value="">All</option>
+            </select>
+        </div>
+        <div class="col-sm-4">
+            <button type="submit" class="btn btn-outline-primary w-100 h-40" style="position: relative; top: 32px">Apply</button>
+        </div>
+    </div>
+</form>
+<br/>
+
+@foreach (var item in Model.Deals)
+{
+    <div class="frame">
+        <dl class="row">
+
+            <dt class="col-sm-3">***Company Logo will go here***</dt>
+            <dd class="col-sm-3"></dd>
+            <dt class="col-sm-3"><u>Deal Info</u></dt>
+            <dd class="col-sm-3"></dd>
+
+            <dt class="col-sm-3"></dt>
+            <dd class="col-sm-3"></dd>
+            <dt class="col-sm-3">Deal Type:</dt>
+            <dd class="col-sm-3">
+                @Html.DisplayFor(modelItem => item.DealType)
+            </dd>
+
+            <dt class="col-sm-3"></dt>
+            <dd class="col-sm-3"></dd>
+            <dt class="col-sm-3">Deal Origination Date:</dt>
+            <dd class="col-sm-3">
+                @Html.DisplayFor(modelItem => item.DealOriginationDate)
+            </dd>
+
+            <dt class="col-sm-3"><u>Company Stats</u></dt>
+            <dd class="col-sm-3"></dd>
+            <dt class="col-sm-3">Deal Status:</dt>
+            <dd class="col-sm-3">
+                @Html.DisplayFor(modelItem => item.DealStatus)
+            </dd>
+
+            <dt class="col-sm-3">Company Name:</dt>
+            <dd class="col-sm-3">
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </dd>
+            <dt class="col-sm-3">Fund Investing:</dt>
+            <dd class="col-sm-3">
+                @Html.DisplayFor(modelItem => item.FundInvesting)
+            </dd>
+
+            <dt class="col-sm-3">Founded:</dt>
+            <dd class="col-sm-3">
+                @Html.DisplayFor(modelItem => item.Founded)
+            </dd>
+            <dt class="col-sm-3">Currency:</dt>
+            <dd class="col-sm-3">
+                @Html.DisplayFor(modelItem => item.Currency)
+            </dd>
+
+            <dt class="col-sm-3">Country:</dt>
+            <dd class="col-sm-3">
+                @Html.DisplayFor(modelItem => item.Country)
+            </dd>
+            <dt class="col-sm-3">Equity Required (£m):</dt>
+            <dd class="col-sm-3">
+                @Html.DisplayFor(modelItem => item.EquityRequired)
+            </dd>
+
+            <dt class="col-sm-3">Region:</dt>
+            <dd class="col-sm-3">
+                @Html.DisplayFor(modelItem => item.Region)
+            </dd>
+            <dt class="col-sm-3">Deal Team Lead:</dt>
+            <dd class="col-sm-3">
+                @Html.DisplayFor(modelItem => item.DealTeamLead)
+            </dd>
+
+            <dt class="col-sm-3">Sector:</dt>
+            <dd class="col-sm-3">
+                @Html.DisplayFor(modelItem => item.Sector)
+            </dd>
+            <dt class="col-sm-3">Investor Relations Lead:</dt>
+            <dd class="col-sm-3">
+                @Html.DisplayFor(modelItem => item.InvestorRelationsLead)
+            </dd>
+
+            <dt class="col-sm-3">Enterprise Fair Value (£m):</dt>
+            <dd class="col-sm-3">
+                @Html.DisplayFor(modelItem => item.EnterpriseValue)
+            </dd>
+            <dt class="col-sm-3">ESG Lead:</dt>
+            <dd class="col-sm-3">
+                @Html.DisplayFor(modelItem => item.ESGLead)
+            </dd>
+        </dl>
+        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+    </div>
+    <br />
+    <br />
+}

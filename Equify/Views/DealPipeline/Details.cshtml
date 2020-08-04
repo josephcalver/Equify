@@ -1,17 +1,10 @@
-﻿@model IEnumerable<Deal>
-
+﻿@model Deal
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Details";
 }
 
 <h1>Deal Pipeline</h1>
 
-<p>
-    <a asp-action="Create">New Deal</a>
-</p>
-
-@foreach (var item in Model)
-{
 <div class="frame">
     <dl class="row">
 
@@ -24,81 +17,79 @@
         <dd class="col-sm-3"></dd>
         <dt class="col-sm-3">Deal Type:</dt>
         <dd class="col-sm-3">
-            @Html.DisplayFor(modelItem => item.DealType)
+            @Html.DisplayFor(modelItem => Model.DealType)
         </dd>
 
         <dt class="col-sm-3"></dt>
         <dd class="col-sm-3"></dd>
         <dt class="col-sm-3">Deal Origination Date:</dt>
         <dd class="col-sm-3">
-            @Html.DisplayFor(modelItem => item.DealOriginationDate)
+            @Html.DisplayFor(modelItem => Model.DealOriginationDate)
         </dd>
 
         <dt class="col-sm-3"><u>Company Stats</u></dt>
         <dd class="col-sm-3"></dd>
         <dt class="col-sm-3">Deal Status:</dt>
         <dd class="col-sm-3">
-            @Html.DisplayFor(modelItem => item.DealStatus)
+            @Html.DisplayFor(modelItem => Model.DealStatus)
         </dd>
 
         <dt class="col-sm-3">Company Name:</dt>
         <dd class="col-sm-3">
-            @Html.DisplayFor(modelItem => item.CompanyName)
+            @Html.DisplayFor(modelItem => Model.CompanyName)
         </dd>
         <dt class="col-sm-3">Fund Investing:</dt>
         <dd class="col-sm-3">
-            @Html.DisplayFor(modelItem => item.FundInvesting)
+            @Html.DisplayFor(modelItem => Model.FundInvesting)
         </dd>
 
         <dt class="col-sm-3">Founded:</dt>
         <dd class="col-sm-3">
-            @Html.DisplayFor(modelItem => item.Founded)
+            @Html.DisplayFor(modelItem => Model.Founded)
         </dd>
         <dt class="col-sm-3">Currency:</dt>
         <dd class="col-sm-3">
-            @Html.DisplayFor(modelItem => item.Currency)
+            @Html.DisplayFor(modelItem => Model.Currency)
         </dd>
 
         <dt class="col-sm-3">Country:</dt>
         <dd class="col-sm-3">
-            @Html.DisplayFor(modelItem => item.Country)
+            @Html.DisplayFor(modelItem => Model.Country)
         </dd>
         <dt class="col-sm-3">Equity Required (£m):</dt>
         <dd class="col-sm-3">
-            @Html.DisplayFor(modelItem => item.EquityRequired)
+            @Html.DisplayFor(modelItem => Model.EquityRequired)
         </dd>
 
         <dt class="col-sm-3">Region:</dt>
         <dd class="col-sm-3">
-            @Html.DisplayFor(modelItem => item.Region)
+            @Html.DisplayFor(modelItem => Model.Region)
         </dd>
         <dt class="col-sm-3">Deal Team Lead:</dt>
         <dd class="col-sm-3">
-            @Html.DisplayFor(modelItem => item.DealTeamLead)
+            @Html.DisplayFor(modelItem => Model.DealTeamLead)
         </dd>
 
         <dt class="col-sm-3">Sector:</dt>
         <dd class="col-sm-3">
-            @Html.DisplayFor(modelItem => item.Sector)
+            @Html.DisplayFor(modelItem => Model.Sector)
         </dd>
         <dt class="col-sm-3">Investor Relations Lead:</dt>
         <dd class="col-sm-3">
-            @Html.DisplayFor(modelItem => item.InvestorRelationsLead)
+            @Html.DisplayFor(modelItem => Model.InvestorRelationsLead)
         </dd>
 
         <dt class="col-sm-3">Enterprise Fair Value (£m):</dt>
         <dd class="col-sm-3">
-            @Html.DisplayFor(modelItem => item.EnterpriseValue)
+            @Html.DisplayFor(modelItem => Model.EnterpriseValue)
         </dd>
         <dt class="col-sm-3">ESG Lead:</dt>
         <dd class="col-sm-3">
-            @Html.DisplayFor(modelItem => item.ESGLead)
+            @Html.DisplayFor(modelItem => Model.ESGLead)
         </dd>
     </dl>
-    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
     <br />
     <br />
 </div>
-}

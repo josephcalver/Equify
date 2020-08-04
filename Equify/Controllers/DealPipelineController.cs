@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Equify.Models;
 using Equify.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,10 +19,49 @@ namespace Equify.Controllers
         }
 
         // GET: /DealPipeline
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string fundInvesting, string dealStatus, string region,
+            string sector, string dealType)
         {
-            IEnumerable<Deal> dealList = await _equifyApiService.GetDeals();
-            return View(dealList);
+            var selectLists = await _equifyApiService.GetDeals();
+            
+            var fundsInvestingQuery = from d in selectLists
+                                    orderby d.FundInvesting
+                                    select d.FundInvesting;
+            
+            var dealStatusesQuery = from d in selectLists
+                                    orderby d.DealStatus
+                                    select d.DealStatus;
+
+            var regionsQuery = from d in selectLists
+                                    orderby d.Region
+                                    select d.Region;
+
+            var sectorsQuery = from d in selectLists
+                                    orderby d.Sector
+                                    select d.Sector;
+
+            var dealTypesQuery = from d in selectLists
+                                    orderby d.DealType
+                                    select d.DealType;
+
+            var deals = from d in selectLists
+                        orderby d.DealOriginationDate descending
+                        select d;
+
+            var dealList = await _equifyApiService.GetDeals(fundInvesting, dealStatus, region,
+                sector, dealType);
+
+            var dealPipelineViewModel = new DealPipelineViewModel
+            {
+                FundsInvesting = new SelectList(fundsInvestingQuery.Distinct().ToList()),
+                DealStatuses = new SelectList(dealStatusesQuery.Distinct().ToList()),
+                Regions = new SelectList(regionsQuery.Distinct().ToList()),
+                Sectors = new SelectList(sectorsQuery.Distinct().ToList()),
+                DealTypes = new SelectList(dealTypesQuery.Distinct().ToList()),
+                Deals = dealList
+            };
+
+            return View(dealPipelineViewModel);
         }
 
         // POST: /DealPipeline/Create
@@ -44,7 +84,7 @@ namespace Equify.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Edit(int id)
         {
-            ActionResult<Deal> deal = await _equifyApiService.GetDeal(id);
+            Deal deal = await _equifyApiService.GetDeal(id);
 
             if (deal == null)
             {
@@ -67,6 +107,18 @@ namespace Equify.Controllers
                 return NotFound();
             }
             return View(updatedDeal);
+        }
+
+        // GET: /DealPipeline/Details/5
+        public async Task<IActionResult> Details(int id)
+        {
+            Deal deal = await _equifyApiService.GetDeal(id);
+
+            if (deal == null)
+            {
+                return NotFound();
+            }
+            return View(deal);
         }
 
         // POST: /DealPipeline/Delete

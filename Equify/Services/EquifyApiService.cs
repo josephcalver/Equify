@@ -24,14 +24,21 @@ namespace Equify.Services
         {
             var response = await Client.GetAsync("/api/dealpipeline");
 
-            //response.EnsureSuccessStatusCode();
+            string apiResponse = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<IEnumerable<Deal>>(apiResponse);
+        }
+
+        public async Task<IEnumerable<Deal>> GetDeals(string fundInvesting, string dealStatus, string region,
+            string sector, string dealType)
+        {
+            var response = await Client.GetAsync($"/api/dealpipeline?fundInvesting={fundInvesting}&dealStatus={dealStatus}&region={region}&sector={sector}&dealType={dealType}");
 
             string apiResponse = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<IEnumerable<Deal>>(apiResponse);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Deal>> GetDeal(int id)
+        public async Task<Deal> GetDeal(int id)
         {
             var response = await Client.GetAsync($"/api/dealpipeline/{id}");
 
